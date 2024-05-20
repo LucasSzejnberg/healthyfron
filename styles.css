@@ -76,12 +76,14 @@ body {
 }
 
 .image-container {
-    height: 200px;
+    width: calc(25% - 20px); /* Ancho de cada contenedor de imagen */
+    height: auto; /* Altura automática para adaptarse al contenido */
     overflow: hidden;
     border: 1px solid #ddd;
     border-radius: 5px;
     cursor: pointer;
     transition: transform 0.2s;
+    float: left; /* Alinea los contenedores de imágenes en línea */
 }
 
 .image-container img {
@@ -89,6 +91,7 @@ body {
     height: 100%;
     object-fit: cover;
 }
+
 
 .image-container:hover {
     transform: scale(1.05);
