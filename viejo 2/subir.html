@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Archivo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f5deb3; /* color crema */
+            text-align: center;
+            padding: 25px;
+            box-shadow: 0 4px 2px -2px gray;
+            z-index: 2;
+        }
+        .logo {
+            display: inline-block;
+            max-width: 100px; /* ajusta el tamaño del logo según necesites */
+        }
+        .container {
+            margin-top: 150px; /* ajusta según el tamaño del banner y la separación deseada */
+            text-align: center;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input[type="text"] {
+            width: calc(100% - 1002px); /* ajusta el tamaño del input según necesites */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .btn-container {
+            margin-top: 20px;
+        }
+        input[type="submit"], input[type="button"] {
+            background-color: #008CBA; /* color azul */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <img class="logo" src="ruta/a/tu/logo.png" alt="Logo de tu página">
+    </div>
+    <div class="container">
+        <form action="#" method="post">
+            <div class="input-group">
+                <label for="nombre_archivo">Nombre del Archivo:</label>
+                <input type="text" id="nombre_archivo" name="nombre_archivo">
+            </div>
+            <div class="input-group">
+                <label for="archivo">Seleccionar Archivo:</label>
+                <input type="file" id="archivo" name="archivo">
+            </div>
+            <div class="btn-container">
+                <input type="submit" value="Subir">
+                <input type="button" value="Cancelar" onclick="window.location.href='index.html';">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

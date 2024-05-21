@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivos Médicos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="banner">
+        <!-- Aquí va el logo -->
+        <h1>Logo de la Página</h1>
+    </header>
+    <aside class="sidebar">
+        <button onclick="window.location.href='index.html'">Estudios Médicos</button>
+        <button onclick="window.location.href='historial.html'">Historial</button>
+        <button onclick="window.location.href='subir.html'">Subir Archivo</button>
+    </aside>
+    <section class="search-banner">
+        <!-- Aquí se agrega el texto "Visualización de Archivos" -->
+        <label for="searchBar">Visualización de Archivos:</label>
+        <input type="text" id="searchBar" placeholder="Buscar archivos médicos por nombre...">
+    </section>
+    <main class="content">
+        <div id="imageContainer"></div>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>

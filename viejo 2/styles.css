@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f5deb3; /* color crema */
+    text-align: center;
+    padding: 25px;
+    box-shadow: 0 4px 2px -2px gray;
+    z-index: 2;
+}
+
+.sidebar {
+    position: fixed;
+    top: 100px; /* adjust according to banner height */
+    left: 0;
+    width: 200px;
+    height: calc(100% - 60px); /* adjust according to banner height */
+    background-color: #87ceeb; /* color celeste */
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 40px 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    z-index: 1;
+    justify-content: flex-start; /* ensure buttons are aligned to the start */
+}
+
+.sidebar button {
+    margin-top: 30px; /* Agrega un margen superior para separar los botones */
+    padding: 10px;
+    font-size: 16px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.sidebar button:last-child {
+    margin-top: 250px; /* Margen superior extra para el último botón "Subir Archivo" */
+}
+.sidebar button:hover {
+    background-color: #f0f0f0;
+}
+
+.sidebar button.active {
+    background-color: #d3d3d3; /* indicate active button */
+}
+
+
+
+#searchBar {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+}
+
+
+.search-banner {
+    position: fixed;
+    top: 130px; /* move further down to avoid overlap */
+    left: 240px; /* move further to the right to avoid sidebar */
+    width: calc(100% - 240px); /* adjust according to sidebar width */
+    padding: 10px;
+    background-color: #eaeaea;
+    box-shadow: 0 4px 2px -2px gray;
+    z-index: 1;
+}
+
+.content {
+    margin: 130px 0 0 240px; /* adjust according to banners' and sidebar's width/height */
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsiveness */
+    gap: 20px;
+}
+
+.image-container {
+    width: calc(25% - 30px); /* Ancho de cada contenedor de imagen */
+    height: auto; /* Altura automática para adaptarse al contenido */
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    float: left; /* Alinea los contenedores de imágenes en línea */
+}
+
+.image-container img {
+    width: 100%; /* Las imágenes ocuparán todo el ancho del contenedor */
+    height: auto; /* Altura automática para mantener la proporción */
+    object-fit: cover; /* Escalar la imagen manteniendo su relación de aspecto */
+}
+
+.image-container:hover {
+    transform: scale(1.05);
+}

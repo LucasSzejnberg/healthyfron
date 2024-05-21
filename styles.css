@@ -1,98 +1,83 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-}
-
+/* Estilos para el banner */
 .banner {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #f5deb3; /* color crema */
-    text-align: center;
-    padding: 10px;
-    box-shadow: 0 4px 2px -2px gray;
-    z-index: 2;
+  width: 100%;
+  height: 130px; /* Altura del banner, ajusta según necesites */
+  background-color: #EEB573; /* Color de fondo del banner */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
+.banner img {
+  max-width: 57%; /* Cambiar el tamaño del logo */
+  max-height: 71%; /* Cambiar el tamaño del logo */
+}
+
+/* Contenedor principal para el layout */
+.main-container {
+  display: flex;
+  margin-top: 130px; /* Altura del banner */
+}
+
+/* Estilos para el sidebar */
 .sidebar {
-    position: fixed;
-    top: 60px; /* adjust according to banner height */
-    left: 0;
-    width: 200px;
-    height: calc(100% - 60px); /* adjust according to banner height */
-    background-color: #87ceeb; /* color celeste */
-    display: flex;
-    flex-direction: column;
-    padding: 20px 20px 40px 20px;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    z-index: 1;
-    justify-content: flex-start; /* ensure buttons are aligned to the start */
+  width: 200px;
+  background-color: #B0B0B0; /* Color de fondo gris */
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: fixed;
+  top: 130px; /* Debajo del banner */
+  bottom: 0;
 }
 
-.sidebar button {
-    margin: 20px 0;
-    padding: 10px;
-    font-size: 16px;
-    background-color: #fff;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+.sidebar-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
 }
 
-.sidebar button:hover {
-    background-color: #f0f0f0;
+#estudios-btn {
+  background-color: #ADD8E6; /* Color celeste */
 }
 
-.sidebar button.active {
-    background-color: #d3d3d3; /* indicate active button */
+#historia-btn {
+  background-color: #FF6347; /* Color rojo (puedes cambiarlo si deseas) */
 }
 
-.search-banner {
-    position: fixed;
-    top: 100px; /* move further down to avoid overlap */
-    left: 240px; /* move further to the right to avoid sidebar */
-    width: calc(100% - 240px); /* adjust according to sidebar width */
-    padding: 10px;
-    background-color: #eaeaea;
-    box-shadow: 0 4px 2px -2px gray;
-    z-index: 1;
+.sidebar-img {
+  max-width: 100%;
+  height: auto;
 }
 
-#searchBar {
-    width: 100%;
-    padding: 8px;
-    font-size: 16px;
+.icono-img {
+  max-width: 20px; /* Ajusta el tamaño del ícono */
+  max-height: 20px;
 }
 
-.content {
-    margin: 180px 0 0 240px; /* adjust according to banners' and sidebar's width/height */
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    gap: 20px;
+/* Estilos para la galería */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  margin-left: 210px; /* Desplazamiento para que no quede debajo del sidebar */
+  flex-grow: 1;
 }
 
-.image-container {
-    width: calc(25% - 20px); /* Ancho de cada contenedor de imagen */
-    height: auto; /* Altura automática para adaptarse al contenido */
-    overflow: hidden;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.2s;
-    float: left; /* Alinea los contenedores de imágenes en línea */
-}
-
-.image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-
-.image-container:hover {
-    transform: scale(1.05);
+/* Estilos generales */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
 }

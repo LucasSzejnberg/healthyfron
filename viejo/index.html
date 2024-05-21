@@ -1,234 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Healthy - Visor de Imágenes</title>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    min-height: 100vh;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>healthi</title>
+    <style>
+        /* Estilos globales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
 
-  .banner {
-    background-color: #decf70;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    width: 100%;
-    z-index: 1000;
-    position: fixed; /* Hacer que el banner sea fijo */
-    top: 0; /* Posicionarlo en la parte superior */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+        /* Encabezado */
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
 
-  .search-container {
-    margin-right: 20px;
-  }
+        /* Barra de búsqueda */
+        .search-bar {
+            background-color: #f5f5f5;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-  .search-container input[type="text"] {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-size: 16px;
-  }
+        /* Sidebar */
+        .sidebar {
+            background: linear-gradient(to bottom, #0074d9, #001f3f);
+            color: #fff;
+            width: 250px;
+            padding: 1rem;
+        }
 
-  .search-container button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
 
-  .sidebar {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    width: 200px;
-    position: fixed;
-    top: 50px; /* Ajuste para dejar espacio debajo del banner */
-    left: 0;
-    height: calc(100vh - 50px); /* Ajuste para ocupar todo el espacio menos el del banner */
-    overflow-y: auto;
-  }
+        .sidebar li {
+            margin-bottom: 1rem;
+        }
 
-  .image-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
-    padding: 20px;
-    margin-top: 100px; /* Ajuste para más espacio entre el banner y las imágenes */
-    margin-left: 220px; /* Ajuste para dejar espacio a la izquierda de las imágenes */
-    flex-grow: 1;
-  }
+        /* Contenido principal */
+        .main-content {
+            padding: 2rem;
+        }
 
-  .image-container img {
-    max-width: 100%;
-    max-height: 100%;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.2s;
-    position: relative; /* Necesario para posicionar el menú desplegable */
-  }
+        /* Filas de productos */
+        .product-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
 
-  .image-container img:hover {
-    transform: scale(1.05);
-  }
+        .product-name {
+            font-weight: bold;
+        }
 
-  .upload-button {
-    display: block;
-    margin: 20px auto; /* Ajuste para más espacio entre el banner y el botón */
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  /* Estilo para botones de la barra lateral */
-  .sidebar-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 5px;
-    margin-top: 10px; /* Ajuste para mover los botones hacia abajo */
-  }
-
-  /* Estilo para el botón activo */
-  .active {
-    background-color: #4CAF50;
-  }
-</style>
+        /* Dropdowns */
+        select {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-
-<div class="banner">
-  <h1>Healthy</h1>
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Buscar por nombre...">
-    <button onclick="searchImages()">Buscar</button>
-  </div>
-</div>
-
-<div class="sidebar" style="top: 100px;"> <!-- Ajuste aquí para mover los botones hacia abajo -->
-  <!-- Botones de la barra lateral -->
-  <button class="sidebar-button active">Estudios</button>
-  <button class="sidebar-button">Historia Clínica</button>
-  <!-- Botón para subir estudios -->
-  <button class="upload-button">Subir estudio</button>
-</div>
-
-<div class="image-container" id="imageContainer">
-  <!-- Imágenes se agregarán aquí dinámicamente -->
-</div>
-
-<script>
-
-// Supongamos que tienes un array de imágenes que quieres enviar a la base de datos
-const arrayDeImagenes = [
-  { url: 'imagen1.jpg', descripcion: 'Descripción de la imagen 1' },
-  { url: 'imagen2.jpg', descripcion: 'Descripción de la imagen 2' },
-  // Agrega más elementos si es necesario
-];
-
-// Configuración para la solicitud
-const requestOptions = {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json', // Indicamos que estamos enviando JSON
-  },
-  body: JSON.stringify(arrayDeImagenes), // Convertimos el array a JSON antes de enviarlo
-};
-
-// Realizar la solicitud
-fetch('https://api.example.com/subirImagenes', requestOptions)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok.');
-    }
-    return response.json(); // Si el servidor devuelve datos, los convertimos a JSON
-  })
-  .then(data => {
-    // Manejar la respuesta del servidor si es necesario
-    console.log('Respuesta del servidor:', data);
-  })
-  .catch(error => {
-    // Manejar errores aquí
-    console.error('Hubo un problema con la solicitud:', error);
-  });
-
-  // Array de URLs públicas de imágenes en Google Drive
-  fetch('https://api.example.com/imagenes') // Reemplaza la URL con la dirección correcta de tu API
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok.');
-    }
-    return response.json(); // Convertir la respuesta a JSON
-  })
-  .then(data => {
-    // Aquí, 'data' es el array que recibes del servidor
-    // Copiar 'data' a 'arrayDeImagenes'
-    let arrayDeImagenes = data.slice(); // Usamos slice() para hacer una copia del array
-    
-    // Ahora puedes trabajar con 'arrayDeImagenes' como desees
-    console.log(arrayDeImagenes);
-  })
-  .catch(error => {
-    // Manejar errores aquí
-    console.error('Hubo un problema con la solicitud:', error);
-  });
-
-  const images = [
-  "mbappe.jpg",  "messi.jfif", "abc.jpg",  "abc2.jpg", "def.jpg", "ghi.jpg", "jkl.jpg", "mno.jpg", "pqr.jpg", "stu.jpg", "vwx.jpg", "yz.jpg"
-    // Agrega aquí más URLs de imágenes según sea necesario
-  ];
-
-  // Función para crear elementos de imagen y agregarlos al contenedor
-  function displayImages(imageUrls) {
-    const container = document.getElementById("imageContainer");
-    container.innerHTML = ""; // Limpiar el contenedor antes de agregar nuevas imágenes
-    imageUrls.forEach(imageUrl => {
-      const imgElement = document.createElement("img");
-      imgElement.src = imageUrl;
-      imgElement.setAttribute("onclick", `openImage("${imageUrl}")`);
-      container.appendChild(imgElement);
-    });
-  }
-
-  // Función para abrir una imagen en una nueva pestaña
-  function openImage(imageUrl) {
-    window.open(imageUrl, "_blank");
-  }
-
-  // Función para filtrar imágenes basadas en el texto de búsqueda
-  function searchImages() {
-    const searchInput = document.getElementById("searchInput").value.toLowerCase();
-    const filteredImages = images.filter(imageUrl => imageUrl.toLowerCase().includes(searchInput));
-    displayImages(filteredImages);
-  }
-
-  // Llamar a la función para mostrar todas las imágenes cuando se cargue la página
-  window.onload = function() {
-    displayImages(images);
-  };
-</script>
-
+    <header>
+        <h1>healthi</h1>
+    </header>
+    <div class="search-bar">
+        <input type="text" placeholder="Buscar...">
+        <button>Buscar</button>
+    </div>
+    <div class="sidebar">
+        <ul>
+            <li>ESTUDIOS</li>
+            <li>HISTORIA CLINICA</li>
+            <li>SUBIR ESTUDIO</li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <div class="product-row">
+            <span class="product-name">Calcivie Behrend</span>
+            <select>
+                <option value="opcion1">Opción 1</option>
+                <option value="opcion2">Opción 2</option>
+                <option value="opcion3">Opción 3</option>
+            </select>
+        </div>
+        <!-- Agregar más filas de productos aquí -->
+    </div>
 </body>
 </html>
