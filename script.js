@@ -1,6 +1,6 @@
 window.onload = function() {
     var gallery = document.getElementById('gallery');
-    var imagenes = ['imagen1.jpg', 'imagen2.jpg', 'imagen3.jpg','imagen1.jpg', 'imagen2.jpg', 'imagen3.jpg','imagen1.jpg', 'imagen2.jpg', 'imagen3.jpg','imagen1.jpg', 'imagen2.jpg', 'imagen3.jpg',]; // Agrega las rutas de tus imágenes aquí
+    //var imagenes = ['imagen1.jpg', 'imagen2.jpg', 'imagen3.jpg','imagen1.jpg', 'imagen2.jpg', 'imagen3.jpg','imagen1.jpg', 'imagen2.jpg', 'imagen3.jpg','imagen1.jpg', 'imagen2.jpg', 'imagen3.jpg',]; // Agrega las rutas de tus imágenes aquí
   
     // Crear las imágenes en la galería
     imagenes.forEach(function(imagenSrc) {
